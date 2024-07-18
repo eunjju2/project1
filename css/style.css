@@ -1,0 +1,90 @@
+@charset "utf-8"; /*언어*/
+ /*구글 폰트 삽입*/
+ @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+/*    Reset CSS  */
+/*리셋 과정 중요*/
+* { margin:0;  padding:0; }
+ol,ul { list-style: none; } /*리스트 숫자 같은거 안나오도록*/
+a { outline:0; text-decoration:none; color:#bbb;} /*글자 색상 안바뀌도록*/
+img { border:0;} /*영역테두리를 0으로. 이미지만 보여주도록 함*/
+body { position:fixed;  width:100%; height:100%; background:#ffffff;} 
+
+
+/* 배경동영상 */
+/*위로 60 올림(찾은 영상에 따라 비율 달라짐). 배경을 어둡게 나타나기 위해 투명도 0.9. 화면이 작아지면 1600px*/
+.vid { width:100%; height:100%; position:fixed; top:-60px; left:0px; opacity:0.9; }
+.vid video { width:100%; min-width:1600px; }
+
+/*로고*/
+h1 { position:fixed; top:40px; left:50px; z-index:10;}
+h1 img { width:200px; height:auto;}
+/*위치 fixed*/
+header { width:700px; height:100%; position:fixed; top:0px; left:-420px; 
+/*각도 바뀔 때 이용하는 것 : skew. X 축으로만 40도 회전*/
+background:linear-gradient(-45deg, #00A6F2, #DCE302); transform:skewX(-40deg); }
+
+
+/* 1depth*/
+#gnb { 	width:220px; position:absolute; top:150px; right:0px;}
+#gnb>li {position:relative; }
+#gnb>li>a { display:block; width:220px; height:50px; font:bold 18px/3 play; color:#222; box-sizing:border-box; padding-right:40px; text-align:right;}
+#gnb>li.on>a { background:#F2F2F2; color:#595351;}
+#gnb>li:hover>a { background:#F2F2F2; color:#595351;}
+#gnb em { display:inline-block; transform:skewX(40deg)!important; }
+#gnb em i { 	margin-right:20px;}
+
+/* 2depth */
+#gnb ul { position:absolute; left:0px;  top:0px; opacity:0; transition:all 0.4s;}
+#gnb>li:hover ul { opacity:0.8; left:205px; }
+#gnb ul a { display:block; width:150px; height:40px; background:#F2B6D2; border-bottom:1px solid #F26680; font:bold 16px/2.5 arial; color:#fff; box-sizing:border-box; padding-left:50px; margin-bottom:3px; transition:all 0.5s; }
+#gnb ul a:hover { background:#F26680; color:#F2B6D2; }
+#gnb>li.on ul { opacity:0.8; left:205px; top:-10px; }
+#gnb li.on ul a { background:#F2B6D2; opacity:0.7; } 
+
+/* sns 버튼 모음*/
+#sns { position:fixed; top:60px; right:50px;}
+#sns li { float:left; margin-right:30px;}
+#sns .fa { font-size:25px; color:#F20530; opacity:0.5;	transform:scale(1); 	transition:all 0.5s;}
+#sns .fa:hover { opacity:1; transform:scale(1.4);}
+
+
+/* contents 레이아웃 */
+#side { width:800px; height:100%; position:fixed; bottom:0px; right:-850px; background:#F2B705; opacity:0.8; transform:skewX(-40deg); transition:all 0.5s;}
+#side:hover { right:-500px; opacity:0.8;}
+#side .con { width:400px; height:100%; position:absolute; left:150px; bottom:0px; background:#F2F2F2; 	box-sizing:border-box; padding:10px; transition:all  1s;}
+#side:hover .con { left:50px;}
+
+/* contents내 썸네일 */
+#side .con p { width: 300px; height:100px; position:absolute; left:50px;}
+#side .con p em { display:inline-block; font:bold 16px/1.7 arial; color:#05AFF2; transform:skewX(40deg);}
+#side .con p img { width:300px; height:100px; opacity:0.7; transition:all 0.5s;}
+#side .con p img:hover { opacity:1;}
+#side .con p:nth-child(1) { bottom:270px; transform: translateX(200px); transition:all  0.4s;}
+#side .con p:nth-child(2) { bottom:100px; transform: translateX(200px); transition:all  0.8s;}
+#side:hover .con p { transform:translateX(0px);}	
+
+/* 자동롤링 버튼*/
+#side .btnContents { width:150px; height:50px; position:absolute;  bottom:40px; left:50px; color:#F26680;	transform:skewX(40deg); }
+#side:hover .btnContents { left:700px;}	
+.btnContents i { font-size:60px; position:absolute; bottom:0px; right:0px; opacity:1;}
+/*무한반복*/
+.btnContents i:nth-child(1) { animation:ani linear 1.5s 0s infinite;} 
+.btnContents i:nth-child(2) { animation:ani linear 1.5s 0.5s infinite;}
+.btnContents i:nth-child(3) { animation:ani linear 1.5s 1.0s infinite;}
+
+/*키프레임을 만듦*/
+@keyframes ani {
+	0% { right:0px; transform:sclae(1); opacity:1;} /*0일때*/
+	100% { right:100px; transform:scale(1.5); opacity:0;} /*100일때. 크기는 커지고 점점 투명해짐*/
+}
+
+
+
+
+
+
+
+
+
